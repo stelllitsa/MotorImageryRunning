@@ -3,22 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <title>Motor Imagery Running Study</title>
+  <style>
+    section { display: none; }
+    section.active { display: block; }
+    button { margin-top: 20px; padding: 10px 20px; font-size: 16px; }
+  </style>
 </head>
 <body>
-  <h1>Welcome to the Motor Imagery Study</h1>
 
-  <p>Before you begin, please follow these steps:</p>
+  <!-- Info Sheet Section -->
+  <section id="info" class="active">
+    <h2>Participant Information Sheet</h2>
+    <iframe src="https://docs.google.com/document/d/1tRSOJk-m6DBKmsGsSq1T-uNn7eYjsQi1VupD1f6Rivo/preview" width="100%" height="600px"></iframe>
+    <button onclick="goTo('consent')">Proceed to Consent Form</button>
+  </section>
 
-  <h2>Step 1: Read the Information Sheet</h2>
-  <p><a href="https://docs.google.com/document/d/1tRSOJk-m6DBKmsGsSq1T-uNn7eYjsQi1VupD1f6Rivo/edit?tab=t.0" target="_blank">Open Participant Information Sheet</a></p>
+  <!-- Consent Form Section -->
+  <section id="consent">
+    <h2>Consent Form</h2>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdA9BBvmsnRp-xEY-1AId4p2sO5-PPqT2zrSc4xPCKTiTD5XA/viewform?embedded=true" width="100%" height="600px"></iframe>
+    <button onclick="goTo('experiment')">Start the Experiment</button>
+  </section>
 
-  <h2>Step 2: Fill Out the Consent Form</h2>
-  <p><a href="https://docs.google.com/forms/d/19BsYhpeY-fsUTbM2uH5D8JpiJEXelAHznhiTd0ZN1nU/viewform" target="_blank">Complete the Consent Form</a></p>
+  <!-- Experiment Section -->
+  <section id="experiment">
+    <h2>Start Experiment</h2>
+    <p>Click below to begin:</p>
+    <a href="https://run.pavlovia.org/Panayiotidou/runners_mi_project" target="_blank">
+      <button>Start the Experiment</button>
+    </a>
+  </section>
 
-  <h2>Step 3: Start the Experiment</h2>
-  <p>Once you’ve submitted the consent form, click the button below to begin the experiment:</p>
-  <a href="https://run.pavlovia.org/Panayiotidou/runners_mi_project" target="_blank">
-    <button style="font-size: 18px; padding: 10px 20px;">Start the Experiment</button>
-  </a>
+  <script>
+    function goTo(sectionId) {
+      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(sectionId).classList.add('active');
+      window.scrollTo(0, 0);
+    }
+  </script>
+
 </body>
 </html>
+
